@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="input" type="text" />
+    <button onclick="addTodo()">Add todo</button>
+    <button onclick="deleteLastTodo()">Delete Last</button>
+    <button onclick="deleteFirstTodo()">Delete First</button>
+    <div id="todos"></div>
+  </body>
+  <script>
+    todos = [];
+    function addTodo() {
+      const input = document.getElementById("input").value;
+      todos.push(input);
+      render();
+    }
+    function deleteLastTodo() {
+      todos.pop();
+      render();
+    }
+    function deleteFirstTodo() {
+      todos.shift();
+      render();
+    }
+    function createTodoComponent(todo) {
+      const div = document.createElement("div");
+      const button = document.createElement("button");
+      const h1 = document.createElement("h1");
+      h1.innerText = todo;
+      button.innerText = "Delete";
+      div.appendChild(h1);
+      div.appendChild(button);
+      return div;
+    }
+    function render() {
+      const todosDiv = document.querySelector("#todos");
+      todosDiv.innerHTML = "";
+      for (let i = 0; i < todos.length; i++) {
+        const todo = todos[i];
+        const todoComponent = createTodoComponent(todo);
+        todosDiv.appendChild(todoComponent);
+      }
+    }
+  </script>
+</html>
