@@ -33,9 +33,20 @@
       const h1 = document.createElement("h1");
       h1.innerText = todo;
       button.innerText = "Delete";
+      button.style.color = "orange";
+      button.style.border = "lightgreen";
+      button.onclick = deleteTodo(todo);
       div.appendChild(h1);
       div.appendChild(button);
+      div.style.color = "pink";
       return div;
+    }
+    function deleteTodo(todo) {
+      return function () {
+        const index = todos.indexOf(todo);
+        todos.splice(index, 1);
+        render();
+      };
     }
     function render() {
       const todosDiv = document.querySelector("#todos");
