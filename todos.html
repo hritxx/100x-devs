@@ -20,11 +20,11 @@
       render();
     }
     function deleteLastTodo() {
-      todos.pop();
+      todos.splice(todos.length - 1, 1);
       render();
     }
     function deleteFirstTodo() {
-      todos.shift();
+      todos.splice(0, 1);
       render();
     }
     function createTodoComponent(todo) {
