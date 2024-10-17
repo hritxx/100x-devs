@@ -1,4 +1,4 @@
-const { Command } = require("commander");
+const { Command } = require("./node_modules/commander/typings");
 
 const program = new Command();
 
